@@ -44,12 +44,16 @@ public class BashTS extends BaseTest {
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash002", 2);
 		registerPage.fillInformationRegisterDatiles(testCaseDataMap);
 
-//	comm.VarifySigninUserName(testCaseDataMap);
+	//	comm.VarifySigninUserName(testCaseDataMap);
 		Thread.sleep(10000);
 
 	}
 
 	public void verifyTes003() {
+
+	}
+	
+	public void verifyTes004() {
 
 	}
 
