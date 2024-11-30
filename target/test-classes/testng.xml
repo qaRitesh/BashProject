@@ -5,8 +5,8 @@
 		<classes>
 			<class name="testScript.BashTS">
 				<methods>
-					<exclude name="verifyBash001SearchProducts"></exclude>
-					<include name="verifyBash002SNewUserRegister"></include>
+					<include name="verifyBash001SearchProducts"></include>
+					<exclude name="verifyBash002SNewUserRegister"></exclude>
 				</methods>
 			</class>
 		</classes>
