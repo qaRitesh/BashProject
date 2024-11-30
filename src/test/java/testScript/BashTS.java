@@ -9,6 +9,8 @@ import com.aventstack.extentreports.Status;
 import com.bash.Common.CommonClass;
 import com.bash.LoingPage.LoginPage;
 import com.bash.Register.RegisterPage;
+import com.bash.Register.RegisterWithApplePage;
+import com.bash.Register.RegisterWithFaceBookPage;
 import com.tfg.bash.genericyCodes.DataUtile;
 import com.tfg.bash.genericyCodes.WebUtil;
 
@@ -21,21 +23,8 @@ public class BashTS extends BaseTest {
 	DataUtile database = new DataUtile();
 
 	@Test
-	public void verifyBash001SearchProducts() throws InterruptedException {
-		gm.getExtTest().log(Status.INFO, "verifyAM001SearchProducts TestScript started Successfully.");
-		comm = new CommonClass(gm);
-		comm.userSignInBT();
-		LoginPage loginpage = new LoginPage(gm);
-		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash001", 2);
-		loginpage.validLoginDeatils(testCaseDataMap);
-		comm.VarifySigninUserName(testCaseDataMap);
-		Thread.sleep(10000);
-
-	}
-
-	@Test
-	public void verifyBash002NewUserRegister() throws InterruptedException {
-		gm.getExtTest().log(Status.INFO, "verifyBash002NewUserRegister TestScript started Successfully.");
+	public void verifyBash001NewUserRegister() throws InterruptedException {
+		gm.getExtTest().log(Status.INFO, "verifyBash001NewUserRegister TestScript started Successfully.");
 		comm = new CommonClass(gm);
 		comm.userSignInBT();
 		LoginPage loginpage = new LoginPage(gm);
@@ -48,7 +37,59 @@ public class BashTS extends BaseTest {
 
 	}
 
-	public void verifyBash003SearchItems() {
+	@Test
+	public void verifyBash002RegisterWithGoogle() {
+		gm.getExtTest().log(Status.INFO, "verifyBash002RegisterWithGoogle TestScript started Successfully.");
+		comm= new CommonClass(gm);
+		comm.userSignInBT();
+		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash002", 2);
+		LoginPage loginPage=new LoginPage(gm);
+		loginPage.newRegisterBT();
+		RegisterPage registerPage=new RegisterPage(gm);
+		registerPage.getGoogleBaseRegister();		
+	}
+	
+	@Test
+	public void verifyBash003RegisterWithfaceBook() {
+		gm.getExtTest().log(Status.INFO, "verifyBash002RegisterWithGoogle TestScript started Successfully.");
+		comm= new CommonClass(gm);
+		comm.userSignInBT();
+		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash003", 2);
+		LoginPage loginPage=new LoginPage(gm);
+		loginPage.newRegisterBT();
+		RegisterPage registerPage=new RegisterPage(gm);
+		registerPage.getFaceBookBaseRegister();	
+		RegisterWithFaceBookPage facebookRP=new RegisterWithFaceBookPage(gm);
+		facebookRP.logoFaceBookText(testCaseDataMap);
+	}
+	
+	@Test()
+	public void verifyBash004RegisterWithApple() {
+		gm.getExtTest().log(Status.INFO, "verifyBash002RegisterWithGoogle TestScript started Successfully.");
+		comm= new CommonClass(gm);
+		comm.userSignInBT();
+		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash004", 2);
+		LoginPage loginPage=new LoginPage(gm);
+		loginPage.newRegisterBT();
+		RegisterPage registerPage=new RegisterPage(gm);
+		registerPage.getAppleBaseRegister();
+		RegisterWithApplePage appleRP=new RegisterWithApplePage(gm);
+		appleRP.logoAppleText(testCaseDataMap);
+	}
+	
+	
+	
+	
+	@Test
+	public void verifyBash006ValidDeatilsUserLogin() throws InterruptedException {
+		gm.getExtTest().log(Status.INFO, "verifyAM001SearchProducts TestScript started Successfully.");
+		comm = new CommonClass(gm);
+		comm.userSignInBT();
+		LoginPage loginpage = new LoginPage(gm);
+		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash006", 2);
+		loginpage.validLoginDeatils(testCaseDataMap);
+		comm.VarifySigninUserName(testCaseDataMap);
+		Thread.sleep(10000);
 
 	}
 
