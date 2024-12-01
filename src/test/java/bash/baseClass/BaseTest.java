@@ -31,19 +31,24 @@ public class BaseTest {
 		extentR.attachReporter(sparkReporter);
 	}
 
-	@BeforeClass(alwaysRun = true)
-	public void beforeClass() {
-		gm.lunchbrower("ChromeBrowser");
-		gm.impliCityTimewait(60);
-		gm.openUrl("https://www.bash.com");
-		System.out.println("Beforeclass TestScript Start.");
-	}
+//	@BeforeClass(alwaysRun = true)
+//	public void beforeClass() {
+//		gm.lunchbrower("ChromeBrowser");
+//		gm.impliCityTimewait(60);
+//		gm.openUrl("https://www.bash.com");
+//		System.out.println("Beforeclass TestScript Start.");
+//	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeMethod(Method mt) {
+		gm.lunchbrower("ChromeBrowser");
+		gm.impliCityTimewait(60);
+		gm.openUrl("https://www.bash.com");
+		
 		 extenttest=extentR.createTest(mt.getName());
 		gm.setExtTest(extenttest);
-	//	extenttest.log(Status.INFO,"Method TestScript Start.");
+		gm.getExtTest().log(Status.INFO, "Braowser successfully:");
+		gm.getExtTest().log(Status.INFO, "URL hit successfully:");
 		
 	}
 
@@ -57,6 +62,7 @@ public class BaseTest {
 		
 		extenttest.log(Status.INFO, mt.getName()+" Method TestScript Close Successfully.");
 		extentR.flush();
+		gm.driverQuit();
 	}
 
 	@AfterClass(alwaysRun = true)
