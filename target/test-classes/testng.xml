@@ -5,9 +5,10 @@
 		<classes>
 			<class name="testScript.BashTS">
 				<methods>
-					<include name="verifyBash001NewUserRegister"></include>
+					<exclude name="verifyBash001NewUserRegister"></exclude>
 					<include name="verifyBash002RegisterWithGoogle"></include>
-					
+					<include name="verifyBash003RegisterWithfaceBook"></include>
+					<include name="verifyBash004RegisterWithApple"></include>
 					<include name="verifyBash006ValidDeatilsUserLogin"></include>
 				</methods>
 			</class>

@@ -16,8 +16,7 @@ public class CommonClass extends CommonClassOR {
 	}
 	
 	public void userSignInBT() {
-		gm.clickButton(getSignInBT());
-		gm.getExtTest().log(Status.INFO, "Sign button click successfully");
+		gm.clickButton(getSignInBT());		
 	}
 
 	public void VarifySigninUserName(Map<String,String> maptestcaseData) {

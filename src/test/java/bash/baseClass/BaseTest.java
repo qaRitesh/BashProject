@@ -34,11 +34,6 @@ public class BaseTest {
 	public void beforeClass() {
 		gm.lunchbrower("ChromeBrowser");
 		gm.impliCityTimewait(60);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		gm.openUrl("https://www.bash.com");
 		System.out.println("Beforeclass TestScript Start.");
 	}

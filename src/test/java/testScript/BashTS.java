@@ -7,10 +7,10 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.bash.Common.CommonClass;
+import com.bash.Common.RegisterWithApplePage;
+import com.bash.Common.RegisterWithFaceBookPage;
 import com.bash.LoingPage.LoginPage;
 import com.bash.Register.RegisterPage;
-import com.bash.Register.RegisterWithApplePage;
-import com.bash.Register.RegisterWithFaceBookPage;
 import com.tfg.bash.genericyCodes.DataUtile;
 import com.tfg.bash.genericyCodes.WebUtil;
 
@@ -30,7 +30,7 @@ public class BashTS extends BaseTest {
 		LoginPage loginpage = new LoginPage(gm);
 		loginpage.newRegisterBT();
 		RegisterPage registerPage = new RegisterPage(gm);
-		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash002", 2);
+		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash001", 2);
 		registerPage.fillInformationRegisterDatiles(testCaseDataMap);
 		comm.VarifySigninUserName(testCaseDataMap);
 		Thread.sleep(10000);
@@ -45,18 +45,20 @@ public class BashTS extends BaseTest {
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash002", 2);
 		LoginPage loginPage=new LoginPage(gm);
 		loginPage.newRegisterBT();
+		loginPage.getAppleBT();
 		RegisterPage registerPage=new RegisterPage(gm);
 		registerPage.getGoogleBaseRegister();		
 	}
 	
 	@Test
 	public void verifyBash003RegisterWithfaceBook() {
-		gm.getExtTest().log(Status.INFO, "verifyBash002RegisterWithGoogle TestScript started Successfully.");
+		gm.getExtTest().log(Status.INFO, "verifyBash003RegisterWithfaceBook TestScript started Successfully.");
 		comm= new CommonClass(gm);
 		comm.userSignInBT();
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash003", 2);
 		LoginPage loginPage=new LoginPage(gm);
 		loginPage.newRegisterBT();
+		loginPage.faceBookBT();
 		RegisterPage registerPage=new RegisterPage(gm);
 		registerPage.getFaceBookBaseRegister();	
 		RegisterWithFaceBookPage facebookRP=new RegisterWithFaceBookPage(gm);
@@ -65,12 +67,13 @@ public class BashTS extends BaseTest {
 	
 	@Test()
 	public void verifyBash004RegisterWithApple() {
-		gm.getExtTest().log(Status.INFO, "verifyBash002RegisterWithGoogle TestScript started Successfully.");
+		gm.getExtTest().log(Status.INFO, "verifyBash004RegisterWithApple TestScript started Successfully.");
 		comm= new CommonClass(gm);
 		comm.userSignInBT();
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash004", 2);
 		LoginPage loginPage=new LoginPage(gm);
 		loginPage.newRegisterBT();
+		loginPage.appleBT();
 		RegisterPage registerPage=new RegisterPage(gm);
 		registerPage.getAppleBaseRegister();
 		RegisterWithApplePage appleRP=new RegisterWithApplePage(gm);
@@ -78,11 +81,9 @@ public class BashTS extends BaseTest {
 	}
 	
 	
-	
-	
 	@Test
 	public void verifyBash006ValidDeatilsUserLogin() throws InterruptedException {
-		gm.getExtTest().log(Status.INFO, "verifyAM001SearchProducts TestScript started Successfully.");
+		gm.getExtTest().log(Status.INFO, "verifyBash006ValidDeatilsUserLogin TestScript started Successfully.");
 		comm = new CommonClass(gm);
 		comm.userSignInBT();
 		LoginPage loginpage = new LoginPage(gm);
