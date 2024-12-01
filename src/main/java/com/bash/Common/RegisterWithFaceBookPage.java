@@ -14,7 +14,7 @@ public class RegisterWithFaceBookPage extends RegisterWithFaceBookPageOR {
 		this.gm=wd;
 	}
 	
-	public void logoFaceBookText(Map<String,String> fillInformatonMap) {
+	public void faceBookSignHearderText(Map<String,String> fillInformatonMap) {
 		gm.VerifyInnerText(getFaceBookHearderText(), fillInformatonMap.get("FaceBookTextHearder"));
 	}
 

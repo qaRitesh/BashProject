@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 
 import java.lang.reflect.Method;
 
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
@@ -47,8 +48,14 @@ public class BaseTest {
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void afterMethod(Method mt) {
-		extenttest.log(Status.INFO, mt.getName()+" Method TestScript Close.");
+	public void afterMethod(Method mt,ITestResult itr) {
+		if(itr.getStatus()==itr.FAILURE) {
+		String	screenshortpath=gm.takeScreenShort(mt.getName(), "dd-mm-yyyy hh_mm_ss a");
+		gm.getExtTest().addScreenCaptureFromPath(screenshortpath);
+		gm.getExtTest().log(Status.FAIL, "This Optication TestScript fail.");
+		}
+		
+		extenttest.log(Status.INFO, mt.getName()+" Method TestScript Close Successfully.");
 		extentR.flush();
 	}
 

@@ -13,7 +13,7 @@ public class RegisterWithApplePage extends RegisterWithApplePageOR {
 		this.gm=wd;
 	}
 	
-	public void logoAppleText(Map<String,String> fillInformatonMap) {
+	public void appleSignHearderText(Map<String,String> fillInformatonMap) {
 		gm.VerifyInnerText(getAppleHearderText(), fillInformatonMap.get("AppleTextHearder"));
 	}
 

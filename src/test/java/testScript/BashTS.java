@@ -9,6 +9,7 @@ import com.aventstack.extentreports.Status;
 import com.bash.Common.CommonClass;
 import com.bash.Common.RegisterWithApplePage;
 import com.bash.Common.RegisterWithFaceBookPage;
+import com.bash.Common.RegisterWithGooglePage;
 import com.bash.LoingPage.LoginPage;
 import com.bash.Register.RegisterPage;
 import com.tfg.bash.genericyCodes.DataUtile;
@@ -44,10 +45,11 @@ public class BashTS extends BaseTest {
 		comm.userSignInBT();
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash002", 2);
 		LoginPage loginPage=new LoginPage(gm);
-		loginPage.newRegisterBT();
-		loginPage.getAppleBT();
+		loginPage.newRegisterBT();	
 		RegisterPage registerPage=new RegisterPage(gm);
-		registerPage.getGoogleBaseRegister();		
+		registerPage.googleWithRegisterBT();
+		RegisterWithGooglePage googlesignpage=new RegisterWithGooglePage(gm);
+		googlesignpage.googleSignHearderText(testCaseDataMap);
 	}
 	
 	@Test
@@ -60,9 +62,10 @@ public class BashTS extends BaseTest {
 		loginPage.newRegisterBT();
 		loginPage.faceBookBT();
 		RegisterPage registerPage=new RegisterPage(gm);
-		registerPage.getFaceBookBaseRegister();	
+		registerPage.faceBookWithRegisterBT();	
+		
 		RegisterWithFaceBookPage facebookRP=new RegisterWithFaceBookPage(gm);
-		facebookRP.logoFaceBookText(testCaseDataMap);
+		facebookRP.faceBookSignHearderText(testCaseDataMap);
 	}
 	
 	@Test()
@@ -73,11 +76,11 @@ public class BashTS extends BaseTest {
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash004", 2);
 		LoginPage loginPage=new LoginPage(gm);
 		loginPage.newRegisterBT();
-		loginPage.appleBT();
 		RegisterPage registerPage=new RegisterPage(gm);
-		registerPage.getAppleBaseRegister();
+		registerPage.appleWithRegisterBT();
+		
 		RegisterWithApplePage appleRP=new RegisterWithApplePage(gm);
-		appleRP.logoAppleText(testCaseDataMap);
+		appleRP.appleSignHearderText(testCaseDataMap);
 	}
 	
 	

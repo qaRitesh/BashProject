@@ -13,7 +13,7 @@ public class RegisterWithGooglePage extends RegisterWithGooglePageOR {
 		this.gm=wd;
 	}
 	
-	public void logoFaceBookText(Map<String,String> fillInformatonMap) {
+	public void googleSignHearderText(Map<String,String> fillInformatonMap) {
 		gm.VerifyInnerText(getGoogleHearderText(), fillInformatonMap.get("GoogleTextHearder"));
 	}
 

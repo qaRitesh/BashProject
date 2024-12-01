@@ -15,17 +15,17 @@ public class RegisterPage extends RegisterPageOR {
 	}
 
 	// googlefromRegister:
-	public void googleFromRegister() {
+	public void googleWithRegisterBT() {
 		gm.clickButton(getGoogleBaseRegister());
 	}
 
 	// faceBookfromRegister:
-	public void faceBookfromRegister() {
+	public void faceBookWithRegisterBT() {
 		gm.clickButton(getFaceBookBaseRegister());
 	}
 
 	// applefromRegister:
-	public void applefromRegister() {
+	public void appleWithRegisterBT() {
 		gm.clickButton(getAppleBaseRegister());
 	}
 
