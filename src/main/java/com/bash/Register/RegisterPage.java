@@ -37,12 +37,19 @@ public class RegisterPage extends RegisterPageOR {
 		gm.inputData(getFirstName(),fillInformatonMap.get("First Name") );
 		gm.inputData(getLastName(),fillInformatonMap.get("Last Name") );
 		gm.CheckBoxClick(getYesLastestdealsCB());
-		gm.switchToframeByWebElement(getIFrameRobotBT());
-
-		//gm.clickButton(getCheckRobotCB());
-		gm.javascriptClick(getRobot());
-		gm.switchToFramedefaultContent();
+//		gm.switchToframeByWebElement(getIFrameRobotBT());
+//
+//		//gm.clickButton(getCheckRobotCB());
+//		gm.javascriptClick(getRobot());
+//		gm.switchToFramedefaultContent();
+		try {
+			Thread.sleep(30000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+//		gm.clickButton(getRegisterProfileBT());
 		gm.clickButton(getRegisterProfileBT());
+
 	}
 
 }

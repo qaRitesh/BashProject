@@ -41,14 +41,12 @@ public class BaseTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeMethod(Method mt) {
+		 extenttest=extentR.createTest(mt.getName());
+			gm.setExtTest(extenttest);
 		gm.lunchbrower("ChromeBrowser");
 		gm.impliCityTimewait(60);
 		gm.openUrl("https://www.bash.com");
 		
-		 extenttest=extentR.createTest(mt.getName());
-		gm.setExtTest(extenttest);
-		gm.getExtTest().log(Status.INFO, "Braowser successfully:");
-		gm.getExtTest().log(Status.INFO, "URL hit successfully:");
 		
 	}
 

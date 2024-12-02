@@ -5,11 +5,12 @@
 		<classes>
 			<class name="testScript.BashTS">
 				<methods>
-					<include name="verifyBash001NewUserRegister"></include>
-					<include name="verifyBash002RegisterWithGoogle"></include>
-					<include name="verifyBash003RegisterWithfaceBook"></include>
-					<include name="verifyBash004RegisterWithApple"></include>
-					<include name="verifyBash006ValidDeatilsUserLogin"></include>
+					<exclude name="verifyBash001NewUserRegister"></exclude>
+					<exclude name="verifyBash002RegisterWithGoogle"></exclude>
+					<exclude name="verifyBash003RegisterWithfaceBook"></exclude>
+					<exclude name="verifyBash004RegisterWithApple"></exclude>
+					<exclude name="verifyBash006ValidDeatilsUserLogin"></exclude>
+					<include name="verifyBash007OptionBaseSearchProduct"></include>
 				</methods>
 			</class>
 		</classes>

@@ -48,7 +48,7 @@ public class RegisterPageOR extends CommonClassOR {
 	@FindBy(xpath = "//span[@id='recaptcha-anchor']//div[@class='recaptcha-checkbox-border']")
 	private WebElement CheckRobotCB;
 	
-	@FindBy(xpath = "//button[@title'Register profile']")
+	@FindBy(xpath = "//button[@title='Register profile']")
 	private WebElement RegisterProfileBT;
 	
 	 @CacheLookup 
