@@ -67,7 +67,7 @@ public class BaseTest {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		gm.driverQuit();
+		//gm.driverQuit();
 		//extenttest.log(Status.INFO,"Class TestScript Close.");
 	}
 

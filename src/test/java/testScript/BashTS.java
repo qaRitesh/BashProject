@@ -60,7 +60,6 @@ public class BashTS extends BaseTest {
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash003", 2);
 		LoginPage loginPage=new LoginPage(gm);
 		loginPage.newRegisterBT();
-		loginPage.faceBookBT();
 		RegisterPage registerPage=new RegisterPage(gm);
 		registerPage.faceBookWithRegisterBT();	
 		
