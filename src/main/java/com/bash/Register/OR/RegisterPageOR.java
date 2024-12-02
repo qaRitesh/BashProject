@@ -52,6 +52,6 @@ public class RegisterPageOR extends CommonClassOR {
 	private WebElement RegisterProfileBT;
 	
 	 @CacheLookup 
-	 @FindBy(xpath = "//*[text()=\"I'm not a robot\"]") private WebElement robot;
+	 @FindBy(xpath = "//*[contains(text(),'not a robot')]") private WebElement robot;
 
 }

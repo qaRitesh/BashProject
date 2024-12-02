@@ -40,7 +40,7 @@ public class RegisterPage extends RegisterPageOR {
 		gm.switchToframeByWebElement(getIFrameRobotBT());
 
 		//gm.clickButton(getCheckRobotCB());
-		gm.javascriptClick(getCheckRobotCB());
+		gm.javascriptClick(getRobot());
 		gm.switchToFramedefaultContent();
 		gm.clickButton(getRegisterProfileBT());
 	}
