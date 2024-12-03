@@ -10,6 +10,7 @@ import com.bash.Common.CommonClass;
 import com.bash.Common.RegisterWithApplePage;
 import com.bash.Common.RegisterWithFaceBookPage;
 import com.bash.Common.RegisterWithGooglePage;
+import com.bash.Common.SearchProducts;
 import com.bash.LoingPage.LoginPage;
 import com.bash.Register.RegisterPage;
 import com.tfg.bash.genericyCodes.DataUtile;
@@ -85,7 +86,7 @@ public class BashTS extends BaseTest {
 	
 	
 	@Test
-	public void verifyBash006ValidDeatilsUserLogin() throws InterruptedException {
+	public void verifyBash006ValidDeatilsUserLogin() {
 		gm.getExtTest().log(Status.INFO, "verifyBash006ValidDeatilsUserLogin TestScript started Successfully.");
 		comm = new CommonClass(gm);
 		comm.userSignInBT();
@@ -93,21 +94,20 @@ public class BashTS extends BaseTest {
 		Map<String, String> testCaseDataMap = database.getTestCaseData("Bash006", 2);
 		loginpage.validLoginDeatils(testCaseDataMap);
 		comm.VarifySigninUserName(testCaseDataMap);
-		Thread.sleep(10000);
+		gm.threadWaite(10000);
 
 	}
+	
 	
 	@Test
 	public void verifyBash007OptionBaseSearchProduct() {
 		gm.getExtTest().log(Status.INFO, "verifyBash007OptionBaseSearchProduct TestScript started Successfully.");
 		comm = new CommonClass(gm);
 		comm.menTypeProductsShow("Boots");
+		SearchProducts sp=new SearchProducts(gm);
+		sp.totalNumProductsCount();
+		gm.threadWaite(10000);
 		
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	

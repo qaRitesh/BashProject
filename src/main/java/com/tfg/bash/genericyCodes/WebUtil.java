@@ -102,19 +102,19 @@ public class WebUtil {
 			cp.addArguments("start-maximized");
 			cp.addArguments("–disable-notifications");
 			driver = new ChromeDriver(cp);
-			extTest.log(Status.INFO,"Chrome Browser Launched Successfully.");
+			extTest.log(Status.INFO, "Chrome Browser Launched Successfully.");
 		} else if (browser.equalsIgnoreCase("FirfoxBrowser")) {
 			FirefoxOptions cp = new FirefoxOptions();
 			cp.addArguments("start-maximized");
 			driver = new FirefoxDriver(cp);
-			extTest.log(Status.INFO,"Firefox Browser Launched Successfully.");
+			extTest.log(Status.INFO, "Firefox Browser Launched Successfully.");
 		} else if (browser.equalsIgnoreCase("EdgeBrowser")) {
 			EdgeOptions cp = new EdgeOptions();
 			cp.addArguments("start-maximized");
 			driver = new EdgeDriver(cp);
-			extTest.log(Status.INFO,"Microsoft Edge Browser Launched Successfully.");
+			extTest.log(Status.INFO, "Microsoft Edge Browser Launched Successfully.");
 		} else {
-			extTest.log(Status.FAIL,"Broswer can't be Launch:");
+			extTest.log(Status.FAIL, "Broswer can't be Launch:");
 		}
 
 	}
@@ -142,15 +142,15 @@ public class WebUtil {
 //		
 //		return cp;
 //	}
-	
+
 // URl:
 	public void openUrl(String Url) {
 		try {
 			driver.get(Url);
-			System.out.println("The given url:- " + Url + " has opened Successfully");
+			extTest.log(Status.INFO,"The given url:- " + Url + " has opened Successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("The given url:- " + Url + " hasn't opened Successfully");
+			extTest.log(Status.FAIL,"The given url:- " + Url + " hasn't opened Successfully");
 		}
 	}
 
@@ -205,66 +205,75 @@ public class WebUtil {
 	}
 
 //-----------------------------TimeWaite:----------------------------------------------
-	
-						//implicitlyWait:	
+
+	// static waite:
+	public void threadWaite(int numOFSecond) {
+		try {
+			Thread.sleep(numOFSecond);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Dynamic Waite.
+	// implicitlyWait:
 	public void impliCityTimewait(int waiteSecondTime) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(waiteSecondTime));
 	}
-	
-						//ExplicityWaite:
-	
+
+	// ExplicityWaite:
+
 //visibility:	
-	public void explicityVisibility(WebElement we,int timeWateSecond){
-		
-		WebDriverWait	explicityW=new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
+	public void explicityVisibility(WebElement we, int timeWateSecond) {
+
+		WebDriverWait explicityW = new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
 		explicityW.until(ExpectedConditions.visibilityOf(we));
 		extTest.log(Status.INFO, "Explicity time under Element is Visibli. ");
 	}
-	
+
 //Invisibility:	
-		public void explicityInvisibility(WebElement we,int timeWateSecond){
-			
-			WebDriverWait	explicityW=new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
-			explicityW.until(ExpectedConditions.invisibilityOf(we));
-			extTest.log(Status.INFO, "Explicity time under Element is InVisibli. ");
-		}	
-	
+	public void explicityInvisibility(WebElement we, int timeWateSecond) {
+
+		WebDriverWait explicityW = new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
+		explicityW.until(ExpectedConditions.invisibilityOf(we));
+		extTest.log(Status.INFO, "Explicity time under Element is InVisibli. ");
+	}
+
 //Enabled:	
-		public void explicityEnabled(WebElement we,int timeWateSecond){
-			
-			WebDriverWait	explicityW=new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
-			explicityW.until(ExpectedConditions.elementToBeClickable(we));
-			extTest.log(Status.INFO, "Explicity time under Element is Enabled. ");
-		}
-		
+	public void explicityEnabled(WebElement we, int timeWateSecond) {
+
+		WebDriverWait explicityW = new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
+		explicityW.until(ExpectedConditions.elementToBeClickable(we));
+		extTest.log(Status.INFO, "Explicity time under Element is Enabled. ");
+	}
+
 //Disabled:	
-		public void explicityDisabled(WebElement we,int timeWateSecond){
-					
-					WebDriverWait	explicityW=new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
-					explicityW.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(we)));
-					extTest.log(Status.INFO, "Explicity time under Element is Disabled. ");
-		}		
-	
+	public void explicityDisabled(WebElement we, int timeWateSecond) {
+
+		WebDriverWait explicityW = new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
+		explicityW.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(we)));
+		extTest.log(Status.INFO, "Explicity time under Element is Disabled. ");
+	}
+
 //TextInElement:	
-		public void explicityTextInElement(WebElement we,int timeWateSecond,String text){
-							
-				WebDriverWait	explicityW=new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
-				explicityW.until(ExpectedConditions.textToBePresentInElement(we,text));
-				extTest.log(Status.INFO, "Explicity time under Element is TextInElement. ");
-		}		
-	
-		
-								//Fluent waite:
-		public void fluentWate(int timeout) {
-			FluentWait	flt=new FluentWait<WebDriver>(driver);
-			flt.pollingEvery(Duration.ofMillis(100));
-			flt.withTimeout(Duration.ofSeconds(timeout));
-			flt.ignoring(NoSuchElementException.class);
-		}
-		
+	public void explicityTextInElement(WebElement we, int timeWateSecond, String text) {
+
+		WebDriverWait explicityW = new WebDriverWait(driver, Duration.ofSeconds(timeWateSecond));
+		explicityW.until(ExpectedConditions.textToBePresentInElement(we, text));
+		extTest.log(Status.INFO, "Explicity time under Element is TextInElement. ");
+	}
+
+	// Fluent waite:
+	public void fluentWate(int timeout) {
+		FluentWait flt = new FluentWait<WebDriver>(driver);
+		flt.pollingEvery(Duration.ofMillis(100));
+		flt.withTimeout(Duration.ofSeconds(timeout));
+		flt.ignoring(NoSuchElementException.class);
+	}
+
 //============================================================================================		
 
-		//Lunch Driver Close:
+	// Lunch Driver Close:
 	public void driverClose() {
 		driver.close();
 		extTest.log(Status.INFO, "Lunch Driver are Close.");
@@ -334,82 +343,80 @@ public class WebUtil {
 	 */
 
 //getTextListFindelements:
-	
-	  public List<String> getTextListFindelements(List<WebElement> ListweObj) {
-	   
-		  WebElement wetext=null;  
-	  // datastore.
-	  List<String> ListName = new ArrayList<String>(); 
-	  for (int i = 0; i <=ListweObj.size() - 1; i++) { 
-		   wetext = ListweObj.get(i); 
-		  String textName= wetext.getText();
-		  ListName.add(textName); 
-		  extTest.log(Status.INFO, (textName+"/") +" Options text Collect Successfully.");
-		  }
-	  return ListName; 
-	  }
-	 
+
+	public List<String> getTextListFindelements(List<WebElement> ListweObj) {
+
+		WebElement wetext = null;
+		// datastore.
+		List<String> ListName = new ArrayList<String>();
+		for (int i = 0; i <= ListweObj.size() - 1; i++) {
+			wetext = ListweObj.get(i);
+			String textName = wetext.getText();
+			ListName.add(textName);
+			extTest.log(Status.INFO, (textName + "/") + " Options text Collect Successfully.");
+		}
+		return ListName;
+	}
 
 //findElements count:
-	
-	  public int getfindElementCount(List<WebElement> ListweObj) {
-	  
-	  int itemcount = 0; 
-	  itemcount = ListweObj.size();
-	  
-	  return itemcount; }
-	 
+
+	public int getfindElementCount(List<WebElement> ListweObj) {
+
+		int itemcount = 0;
+		itemcount = ListweObj.size();
+
+		return itemcount;
+	}
 
 //allCheckBoxClick: 
-		
-	  public void CheckBoxClick(WebElement weObj) {
-			 String ElementName=weObj.getAccessibleName();
-		  try { 
-		  if (weObj.isSelected() == false) {
-			  weObj.click(); 
-			extTest.log(Status.PASS, ElementName+" CheckBox Click Successfully:");
-		  	} 
-		   
-	  } catch (StaleElementReferenceException e) {
-		   ElementName=weObj.getAccessibleName();
-		  if (weObj.isSelected() == false) {
-			  weObj.click(); 
-			extTest.log(Status.PASS, ElementName+"CheckBox Click Successfully:");
-		  	}  
-	  } catch (Exception e) {
-		  e.printStackTrace();
-	 extTest.log(Status.FAIL,"Failed: " + ElementName + " checkBox can't click Successfuly.");
-	  } 
-	  }	  
-	  
+
+	public void CheckBoxClick(WebElement weObj) {
+		String ElementName = weObj.getAccessibleName();
+		try {
+			if (weObj.isSelected() == false) {
+				weObj.click();
+				extTest.log(Status.PASS, ElementName + " CheckBox Click Successfully:");
+			}
+
+		} catch (StaleElementReferenceException e) {
+			ElementName = weObj.getAccessibleName();
+			if (weObj.isSelected() == false) {
+				weObj.click();
+				extTest.log(Status.PASS, ElementName + "CheckBox Click Successfully:");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			extTest.log(Status.FAIL, "Failed: " + ElementName + " checkBox can't click Successfuly.");
+		}
+	}
+
 //allCheckBoxClick: 
-	
-	  public void allCheckBoxClick(List<WebElement> weObj) {
-		  String  checkboxText=null;
-		  try { 
-		  for (int i = 0; i <= weObj.size() - 1; i++) { 
-		  WebElement weCheckBox = weObj.get(i);
-		  if (weCheckBox.isSelected() == false) {
-			  weCheckBox.click(); 
-			  checkboxText=weCheckBox.getAccessibleName();
-			extTest.log(Status.PASS, checkboxText+"All CheckBox Click Successfully:");
-		  	} 
-		  } 
-	  } catch (StaleElementReferenceException e) {
-		  for (int i = 0; i <= weObj.size() - 1; i++) { 
-			  WebElement weCheckBox = weObj.get(i);
-			  if (weCheckBox.isSelected() == false) {
-				  weCheckBox.click(); 
-				  checkboxText=weCheckBox.getAccessibleName();
-				extTest.log(Status.PASS, checkboxText+"All CheckBox Click Successfully:");
-			  	} 
-			  }  
-	  } catch (Exception e) {
-		  e.printStackTrace();
-	 extTest.log(Status.FAIL,"Failed: " + checkboxText + " checkBox can't click Successfuly.");
-	  } 
-	  }
-	 
+
+	public void allCheckBoxClick(List<WebElement> weObj) {
+		String checkboxText = null;
+		try {
+			for (int i = 0; i <= weObj.size() - 1; i++) {
+				WebElement weCheckBox = weObj.get(i);
+				if (weCheckBox.isSelected() == false) {
+					weCheckBox.click();
+					checkboxText = weCheckBox.getAccessibleName();
+					extTest.log(Status.PASS, checkboxText + "All CheckBox Click Successfully:");
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i <= weObj.size() - 1; i++) {
+				WebElement weCheckBox = weObj.get(i);
+				if (weCheckBox.isSelected() == false) {
+					weCheckBox.click();
+					checkboxText = weCheckBox.getAccessibleName();
+					extTest.log(Status.PASS, checkboxText + "All CheckBox Click Successfully:");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			extTest.log(Status.FAIL, "Failed: " + checkboxText + " checkBox can't click Successfuly.");
+		}
+	}
 
 //uncheckAllcheckBox:		
 	/*
@@ -438,7 +445,7 @@ public class WebUtil {
 			extTest.log(Status.INFO, elementName + " TextBox clear successfully ");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-				js.executeScript("arguments[0].click()", weObj);
+			js.executeScript("arguments[0].click()", weObj);
 		} catch (StaleElementReferenceException e) {
 			weObj.clear();
 			extTest.log(Status.INFO, elementName + " TextBox clear successfully ");
@@ -1019,7 +1026,7 @@ public class WebUtil {
 		try {
 			List<WebElement> number = OptionCount.getOptions();
 			itemcount = number.size();
-			//extTest.log(Status.INFO, elementName + " " + itemcount + " total Options");
+			// extTest.log(Status.INFO, elementName + " " + itemcount + " total Options");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
@@ -1050,7 +1057,7 @@ public class WebUtil {
 				weText = text.get(i);
 				OptionsText = weText.getText();
 				listOptionText.add(OptionsText);
-				extTest.log(Status.INFO, OptionsText+" Options Select");
+				extTest.log(Status.INFO, OptionsText + " Options Select");
 			}
 		} catch (StaleElementReferenceException e) {
 			text = OptionCount.getOptions();
@@ -1058,7 +1065,7 @@ public class WebUtil {
 				weText = text.get(i);
 				OptionsText = weText.getText();
 				listOptionText.add(OptionsText);
-				extTest.log(Status.INFO, OptionsText+" Options Select");
+				extTest.log(Status.INFO, OptionsText + " Options Select");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1437,16 +1444,16 @@ public class WebUtil {
 
 //switchToFrameelementName:
 	public void switchToframeByWebElement(WebElement weObj) {
-		 String elementName	=weObj.getAccessibleName();
+		String elementName = weObj.getAccessibleName();
 		try {
 			driver.switchTo().frame(weObj);
-			extTest.log(Status.INFO, elementName+" Pass: Inside the frame.");
+			extTest.log(Status.INFO, elementName + " Pass: Inside the frame.");
 		} catch (StaleElementReferenceException e) {
 			driver.switchTo().frame(weObj);
-			extTest.log(Status.INFO, elementName+" Pass: Inside the frame.");
+			extTest.log(Status.INFO, elementName + " Pass: Inside the frame.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL, elementName+" Failed: can't been inside the frame.");
+			extTest.log(Status.FAIL, elementName + " Failed: can't been inside the frame.");
 		}
 	}
 
@@ -1527,23 +1534,19 @@ public class WebUtil {
 		}
 
 	}
-	
-	
+
 // 
-		public void javascriptClick(WebElement weObj) {
-		//	String elementName=	weObj.getAccessibleName();
-			try {
-				JavascriptExecutor js=(JavascriptExecutor) driver;
-				js.executeScript("arguments[0].click();", weObj);
-				extTest.log(Status.INFO, " :JavaScript Click successfully");
-			}catch (Exception e) {
-				e.printStackTrace();
-				extTest.log(Status.FAIL," :JavaScript Click can't successfully ");
-			}
+	public void javascriptClick(WebElement weObj) {
+		// String elementName= weObj.getAccessibleName();
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", weObj);
+			extTest.log(Status.INFO, " :JavaScript Click successfully");
+		} catch (Exception e) {
+			e.printStackTrace();
+			extTest.log(Status.FAIL, " :JavaScript Click can't successfully ");
 		}
-	
-	
-	
+	}
 
 //----------------------myverifyString---------myverifynumber---------------------------------------------------------------	
 
@@ -1571,7 +1574,7 @@ public class WebUtil {
 		sa.assertAll(); // Handle,move next line && Show ERROR.
 	}
 
-	//verifyinnerText:
+	// verifyinnerText:
 	public void VerifyInnerText(WebElement we, String expectedText) {
 		String acutalText = we.getText();
 
@@ -1581,7 +1584,7 @@ public class WebUtil {
 			extTest.log(Status.FAIL, "Failed.Actual-- " + acutalText + "&& Expected- " + expectedText);
 		}
 		Assert.assertEquals(acutalText, expectedText); // Hard Assert:
-		
+
 	}
 
 	// verifyTitle:

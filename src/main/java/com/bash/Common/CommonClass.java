@@ -36,8 +36,8 @@ public class CommonClass extends CommonClassOR {
 		for(int i=0;i<=menItemsType.size()-1;i++) {
 				WebElement	oneitem=menItemsType.get(i);
 			String	itemText=oneitem.getText();
-			if(itemText.equalsIgnoreCase(itemsName)) {
-				oneitem.click();
+			if(itemText.equalsIgnoreCase(itemsName)) {			
+				gm.clickButton(oneitem);
 				break;
 			}
 			
