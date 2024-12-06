@@ -30,13 +30,12 @@ public class CommonClass extends CommonClassOR {
 		gm.mousemoverToElement(getWomenTypeProducts());
 	}
 	
-	public void menTypeProductsShow(String itemsName) {
-		gm.mousemoverToElement(getMenTypeProducts());
-		List<WebElement> menItemsType=getMenProducts();
-		for(int i=0;i<=menItemsType.size()-1;i++) {
-				WebElement	oneitem=menItemsType.get(i);
+	public void menTypeProductsShow(Map<String,String> maptestcaseData) {
+		gm.mousemoverToElement(getHomePagetoMenTypeProduct());
+		for(int i=0;i<=getHomePageTypesProducts().size()-1;i++) {
+				WebElement	oneitem=getHomePageTypesProducts().get(i);
 			String	itemText=oneitem.getText();
-			if(itemText.equalsIgnoreCase(itemsName)) {			
+			if(itemText.equalsIgnoreCase(maptestcaseData.get("ProductTypes"))) {			
 				gm.clickButton(oneitem);
 				break;
 			}

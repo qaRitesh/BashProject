@@ -27,9 +27,15 @@ public class CommonClassOR {
 	
 	@FindBy (xpath="//span[@class='thefoschini-vtex-tfg-custom-components-1-x-departmentPillsItemLabel' and text()='Women']")
 	private WebElement WomenTypeProducts;
-	
+	//--------------------MEN mouseOver
 	@FindBy(xpath="//span[@class='thefoschini-vtex-tfg-custom-components-1-x-departmentPillsItemLabel' and text()='Men']")
-	private WebElement MenTypeProducts;
+	private WebElement homePagetoMenTypeProduct;
+	@FindBy(xpath="//a[@href='/department/men' and text()='Men'] ")
+	private WebElement otherepagetoMenTypeProduct;
+	
 	@FindBy(xpath="//div[contains(@class,'thefoschini-vtex-tfg-custom-components-1-x-departmentPillsDropdown')]//a[contains(@class,'thefoschini')]")
-	private List<WebElement> MenProducts;
+	private List<WebElement> homePageTypesProducts;
+	
+//	@FindBy(xpath="//div[contains(@class,'thefoschini-vtex-tfg-custom-components-1-x-departmentPillsDropdown')]//a[contains(@class,'thefoschini')]")
+//	private List<WebElement> searchPageTypesProducts;
 }
